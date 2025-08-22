@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Pago Exitoso</title>
+</head>
+<body>
+  <h2>✅ Pago confirmado</h2>
+  <p>Tu PDF será descargado y enviado a tu correo automáticamente.</p>
+
+  <script>
+    async function descargarPDF(email){
+      try {
+        const res = await fetch("https://certificacionpl300.vercel.app/", {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({email: email})
+        });
+        const data = await res.json();
+
+        if(data.status === "ok"){
+          const token = data.token;
+          const link = document.createElement("a");
+          link.href = `https://certificacionpl300.vercel.app/?token=${token}`;
+          link.download = "https://certificacionpl300.vercel.app/pdfs/PreguntasExamenCertificacionPL300.pdf";
+          link.click();
+          alert("✅ PDF descargado y enviado por correo.");
+        } else {
+          alert(data.message);
+        }
+      } catch(err){
+        console.error(err);
+        alert("Error al procesar la descarga.");
+      }
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const email = params.get("email") || "usuario@ejemplo.com";
+    descargarPDF(email);
+  </script>
+</body>
+</html>
