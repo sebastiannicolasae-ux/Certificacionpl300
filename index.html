@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Compra tu PDF</title>
+  <style>
+    button { padding:10px 20px; margin:10px; }
+  </style>
+</head>
+<body>
+  <h2>Compra tu PDF Premium</h2>
+
+  <div id="contenedor-dinamico" style="display:none;">
+    <h3>Material Premium</h3>
+    <p>Este contenido se convertirá en PDF después del pago.</p>
+  </div>
+
+  <div id="botonPago"></div>
+
+  <script>
+    const modoTest = true; // true = prueba, false = pago real
+
+    function validarEmail(email) {
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return regex.test(email);
+    }
+
+    async function solicitarEmail() {
+      let email = prompt("Ingresa tu correo electrónico para recibir tu PDF:");
+      if(!validarEmail(email)){ alert("Correo inválido"); return solicitarEmail(); }
+      let confirmEmail = prompt("Confirma tu correo:");
+      if(email !== confirmEmail){ alert("Los correos no coinciden"); return solicitarEmail(); }
+      return email;
+    }
+
+    async function init() {
+      const email = await solicitarEmail();
+      document.getElementById("contenedor-dinamico").style.display = "block";
+      const botonDiv = document.getElementById("botonPago");
+
+      if(modoTest){
+        const btn = document.createElement("button");
+        btn.textContent = "Simular pago (modo test)";
+        btn.onclick = () => window.location.href = `success.html?email=${encodeURIComponent(email)}`;
+        botonDiv.appendChild(btn);
+      } else {
+        const btn = document.createElement("a");
+        btn.href = "TU_LINK_DE_PAGO"; // reemplaza por tu link real de Mercado Pago
+        btn.target = "_blank";
+        btn.innerHTML = "<button>Pagar con Mercado Pago</button>";
+        botonDiv.appendChild(btn);
+      }
+    }
+
+    init();
+  </script>
+</body>
+</html>
