@@ -18,7 +18,7 @@
   <div id="botonPago"></div>
 
   <script>
-    const modoTest = true; // true = prueba, false = pago real
+    const modoTest = false; // true = prueba, false = pago real
 
     function validarEmail(email) {
       const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -45,7 +45,7 @@
         botonDiv.appendChild(btn);
       } else {
         const btn = document.createElement("a");
-        btn.href = "TU_LINK_DE_PAGO"; // reemplaza por tu link real de Mercado Pago
+        btn.href = "https://mpago.la/2rmyYei; // reemplaza por tu link real de Mercado Pago
         btn.target = "_blank";
         btn.innerHTML = "<button>Pagar con Mercado Pago</button>";
         botonDiv.appendChild(btn);
