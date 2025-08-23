@@ -21,8 +21,7 @@
         if(data.status === "ok"){
           const token = data.token;
           const link = document.createElement("a");
-          link.href = `https://certificacionpl300.vercel.app/?token=${token}`;
-          link.download = "https://certificacionpl300.vercel.app/pdfs/PreguntasExamenCertificacionPL300.pdf";
+          link.href = "https://certificacionpl300.vercel.app/pdfs/PreguntasExamenCertificacionPL300.pdf";
           link.click();
           alert("✅ PDF descargado y enviado por correo.");
         } else {
