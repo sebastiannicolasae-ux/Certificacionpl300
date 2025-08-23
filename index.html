@@ -21,7 +21,7 @@
     const modoTest = false; // true = prueba, false = pago real
 
     function validarEmail(email) {
-      const regex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       return regex.test(email);
     }
 
@@ -45,8 +45,7 @@
         botonDiv.appendChild(btn);
       } else {
         const btn = document.createElement("a");
-        // ⚠️ Usa aquí el link de Mercado Pago que tenga configuradas tus back_urls
-        btn.href = "https://mpago.la/2rmyYei"; 
+        btn.href = "https://mpago.la/2rmyYei"; // reemplaza por tu link real de Mercado Pago
         btn.target = "_blank";
         btn.innerHTML = "<button>Pagar con Mercado Pago</button>";
         botonDiv.appendChild(btn);
