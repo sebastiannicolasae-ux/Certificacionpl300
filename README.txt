@@ -1,5 +1,5 @@
 1. Hosting:
-   - Subir ZIP y extraerlo...
+   - Subir ZIP y extraerlo....
    - index.html en raíz o public_html.
    - pdfs/ con el PDF dentro.
    - Reemplaza TU_LINK_DE_PAGO en index.html con tu link de Mercado Pago real.
@@ -15,4 +15,5 @@
    - Apps Script usa MailApp.sendEmail desde tu cuenta de Google.
    - Asegúrate de tener permisos de envío activados.
    - La descarga se envía automáticamente al correo confirmado.
+
 
